@@ -1,0 +1,9 @@
+/*返回按钮*/
+.back {
+	position: absolute;
+	margin-top: 10px;
+}
+/*表格文字居中*/
+.td {
+	text-align: center;
+}

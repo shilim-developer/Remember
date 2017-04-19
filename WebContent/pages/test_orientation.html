@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>排布测试</title>
+		<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/animate/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/pages/test_orientation.css"/>
+	</head>
+	<body class="main">
+		<!--退出实验开始-->
+		<a class="back btn btn-default" href="../index.html">
+			<i class="glyphicon glyphicon-chevron-left"></i>退出实验
+		</a>
+		<!--退出实验结束-->
+		
+		<!--实验次数开始-->
+		<div class="test-count">
+		</div>
+		<!--实验次数结束-->
+		
+		<!--时间开始-->
+		<div class="time hidden">31</div>
+		<!--时间结束-->
+		
+		<!--排布方式选择开始-->
+		<div class="orientation-selector">
+			<div class="title animated fadeIn">请选择排布方式</div>
+			<ul class="types">
+				<li class="horizontal animated zoomIn">水平</li>
+				<li class="vertical animated zoomIn">垂直</li>
+			</ul>
+		</div>
+		<!--排布方式选择结束-->
+		
+		<!--测试准备开始-->
+		<div class="prepare hidden">
+			<div class="title animated fadeIn">测试提示</div>
+			<div class="prepare-tips">本次实验分为3次，每次共有10组，每组你将有10秒时间来记忆和回答，准备好了请点击开始按钮</div>
+			<button class="start">开始</button>
+		</div>
+		<!--测试准备结束-->
+		
+		<!--测试内容开始-->
+		<div class="test-borad hidden">
+			<div class="content content-horizontal">00000000000000</div>
+			<div class="content content-vertical hidden">00000000000000</div>
+		</div>
+		<!--测试内容结束-->
+		
+		<!--测试提交开始-->
+		<div class="test-submit hidden">
+			<div class="title animated fadeIn">请输入你记住的内容</div>
+			<input class="submit-in form-control" type="text" autofocus="autofocus"/>
+			<div class="submit-tips"></div>
+			<!--<button class="submit-btn btn btn-default">提交</button>-->
+		</div>
+		<!--测试提交结束-->
+		
+		<!--下次实验提示开始-->
+		<div class="test-next hidden">
+			<button class="next btn btn-default">进入下一次实验</button>
+		</div>
+		<!--下次实验提示结束-->
+		
+		<!--实验结束提示开始-->
+		<div class="test-end hidden">
+			<div class="title">实验结束，感谢你的参与</div>
+		</div>
+		<!--实验结束提示结束-->
+		
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../js/until/until.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/pages/test_orientation.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

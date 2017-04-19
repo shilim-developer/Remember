@@ -1,0 +1,30 @@
+
+/*测试类型选择*/
+.type-box{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.type-box>.types {
+	margin-top: 30px;
+	width: auto;
+	display: flex;
+	flex-direction: row;
+}
+
+.type-box>.types>li{
+	width: 150px;
+	height: 150px;
+	margin: 0 20px;
+	background-color: #AEE239;
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+	line-height: 150px;
+	cursor: pointer;
+}
+
+li>a{
+	color: #FFFFFF !important;
+}

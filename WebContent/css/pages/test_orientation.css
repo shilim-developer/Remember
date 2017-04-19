@@ -1,0 +1,86 @@
+/*排布方式选择*/
+.orientation-selector{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.orientation-selector>.types {
+	margin-top: 30px;
+	width: auto;
+	display: flex;
+	flex-direction: row;
+}
+
+.orientation-selector>.types>li{
+	width: 150px;
+	height: 150px;
+	margin: 0 20px;
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+	line-height: 150px;
+	cursor: pointer;
+}
+.horizontal{
+	background-color: #26ADE4;
+}
+.vertical{
+	background-color: #F02475;
+}
+
+/*测试准备*/
+.prepare{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.prepare>.prepare-tips{
+	margin-top: 30px;
+	font-size: 16px;
+}
+
+.prepare>.start{
+	width: 100px;
+	height: 40px;
+	border: none;
+	background: #4DBCE9;
+	margin-top: 30px;
+	color: #FFFFFF;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+/*测试内容*/
+.test-borad{
+	
+}
+.test-borad>.content-horizontal{
+	font-size: 30px;
+	letter-spacing: 3px;
+}
+.test-borad>.content-vertical{
+	width: 10px;
+	font-size: 30px;
+	line-height: 30px;
+	word-wrap:break-word;
+	word-break:nomal;
+}
+
+/*测试提交*/
+.test-submit{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.test-submit>.submit-in{
+	width: 350px;
+	margin-top: 30px;
+}
+.test-submit>.submit-tips{
+	margin-top: 30px;
+	font-size: 16px;
+}
+.test-submit>.submit-btn{
+	width: 100px;
+	margin-top: 30px;
+}
