@@ -20,7 +20,11 @@
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false" /> -->
-		<table tableName="r_orientation_record" domainObjectName="OrientationRecord" mapperName="OrientationRecordDao"
+<!-- 		<table tableName="r_stimulate_record" domainObjectName="StimulateRecord" mapperName="StimulateRecordDao"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false" /> -->
+		<table tableName="r_culture_record" domainObjectName="CultureRecord" mapperName="CultureRecordDao"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false" />

@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>性别测试</title>
 		<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+		<title>刺激类型测试</title>
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/animate/animate.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/pages/test_sex.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/pages/test_stimulate.css"/>
 	</head>
 	<body class="main">
 		<!--退出实验开始-->
@@ -21,20 +21,8 @@
 		</div>
 		<!--实验次数结束-->
 		
-		<div class="time hidden">31</div>
-		
-		<!--性别选择开始-->
-		<div class="sex-selector">
-			<div class="title animated fadeIn">请选择你的性别</div>
-			<ul class="types">
-				<li class="man animated zoomIn">男</li>
-				<li class="woman animated zoomIn">女</li>
-			</ul>
-		</div>
-		<!--性别选择结束-->
-		
 		<!--测试准备开始-->
-		<div class="prepare hidden">
+		<div class="prepare">
 			<div class="title animated fadeIn">测试提示</div>
 			<div class="prepare-tips">本次实验分为10次，每次共有3组，每组你将有10秒时间来记忆和回答，准备好了请点击开始按钮</div>
 			<button class="start">开始</button>
@@ -50,7 +38,8 @@
 		<!--测试提交开始-->
 		<div class="test-submit hidden">
 			<div class="title animated fadeIn">请按顺序输入你记住的内容</div>
-			<input class="submit-in form-control" type="text" autofocus="autofocus"/>
+			<input class="submit-in form-control" type="text" 
+				autofocus="autofocus" placeholder="字母请输入大写字母"/>
 			<div class="submit-tips"></div>
 			<button class="submit-btn btn btn-default">进入下一组实验</button>
 		</div>
@@ -69,16 +58,8 @@
 		</div>
 		<!--实验结束提示结束-->
 		
-		<div class="result hidden">
-			<div class="title animated fadeIn">测试结果</div>
-			<div><label for="">性别：</label><span class="ysex"></span></div>
-			<div><label for="">正确答案：</label><span class="answer"></span></div>
-			<div><label for="">你的答案：</label><span class="yanswer"></span></div>
-			<div><label for="">正确数：</label><span class="correct-count"></span></div>
-		</div>
-		
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="../js/util/util.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/pages/test_sex.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/pages/test_stimulate.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

@@ -47,6 +47,34 @@ function getRandomNumberStr(count) {
 	return randomResult;
 }
 
+//自动生成n位相邻不重复的数字字符串
+function getDifRandomNumberStr(n) {
+	var randomResult = "";
+	for(var i=0;i<n;i++) {
+		var numberArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+		if(i>0) {
+			numberArr.splice(numberArr.indexOf(parseInt(randomResult.charAt(i-1))),1);
+		}
+		randomResult += numberArr[Math.floor(Math.random() * numberArr.length)];
+	}
+	return randomResult;
+}
+
+//自动生成n位相邻不重复的字母字符串
+function getDifRandomLetterStr(n) {
+	var randomResult = "";
+	for(var i=0;i<n;i++) {
+		var numberArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+		'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+	];
+		if(i>0) {
+			numberArr.splice(numberArr.indexOf(randomResult.charAt(i-1)),1);
+		}
+		randomResult += numberArr[Math.floor(Math.random() * numberArr.length)];
+	}
+	return randomResult;
+}
+
 //生成相应颜色的排列
 function getColorBackground(testContent, color) {
 	var colorArr;

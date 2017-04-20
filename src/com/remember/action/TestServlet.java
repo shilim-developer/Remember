@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.remember.model.ColorRecord;
+import com.remember.model.CultureRecord;
 import com.remember.model.OrientationRecord;
 import com.remember.model.SexRecord;
+import com.remember.model.StimulateRecord;
 import com.remember.model.TestRecord;
-import com.remember.service.ColorRecordService;
-import com.remember.service.OrientationRecordService;
+import com.remember.service.StimulateRecordService;
+import com.remember.service.CultureRecordService;
 import com.remember.service.SexRecordService;
 import com.remember.service.TestRecordService;
 
@@ -25,8 +27,8 @@ public class TestServlet extends HttpServlet {
 	private String methodName;
 	private TestRecordService testRecordService = new TestRecordService();
 	private SexRecordService sexRecordService = new SexRecordService();
-	private OrientationRecordService orientationRecordService = new OrientationRecordService();
-	private ColorRecordService colorRecordService = new ColorRecordService();
+	private CultureRecordService cultureRecordService = new CultureRecordService();
+	private StimulateRecordService stimulateRecordService = new StimulateRecordService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -50,7 +52,7 @@ public class TestServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=utf-8");
 		String methodName = request.getParameter("method");
-		String responseJson = "";
+		String responseJson = "success";
 		switch (methodName) {
 		case "saveRecord":
 			TestRecord testRecord = new TestRecord();
@@ -68,24 +70,23 @@ public class TestServlet extends HttpServlet {
 		case "getAllSexRecord":
 			responseJson = sexRecordService.getAllSexRecordList();
 			break;
-		case "saveOrientationRecord":
-			OrientationRecord orientationRecord = new OrientationRecord();
-			orientationRecord.sethResult(Float.valueOf(request.getParameter("h_result")));
-			orientationRecord.setvResult(Float.valueOf(request.getParameter("v_result")));
-			orientationRecordService.addOrientationRecord(orientationRecord);
+		case "saveCultureRecord":
+			CultureRecord cultureRecord = new CultureRecord();
+			cultureRecord.setCulture(request.getParameter("culture"));
+			cultureRecord.setResult(Float.valueOf(request.getParameter("result")));
+			cultureRecordService.addCultureRecord(cultureRecord);
 			break;
-		case "getAllOrientationRecord":
-			responseJson = orientationRecordService.getAllOrientationRecordList();
+		case "getAllCultureRecord":
+			responseJson = cultureRecordService.getAllCultureRecordList();
 			break;
-		case "saveColorRecord":
-			ColorRecord colorRecord = new ColorRecord();
-			colorRecord.setRbResult(Float.valueOf(request.getParameter("rb_result")));
-			colorRecord.setRgResult(Float.valueOf(request.getParameter("rg_result")));
-			colorRecord.setGbResult(Float.valueOf(request.getParameter("gb_result")));
-			colorRecordService.addColorRecord(colorRecord);
+		case "saveStimulateRecord":
+			StimulateRecord stimulateRecord = new StimulateRecord();
+			stimulateRecord.setNumberResult(Float.valueOf(request.getParameter("number_result")));
+			stimulateRecord.setLetterResult(Float.valueOf(request.getParameter("letter_result")));
+			stimulateRecordService.addStimulateRecord(stimulateRecord);
 			break;
-		case "getAllColorRecord":
-			responseJson = colorRecordService.getAllColorRecordList();
+		case "getAllStimulateRecord":
+			responseJson = stimulateRecordService.getAllStimulateRecordList();
 			break;
 		case "getRecordByTypeId":
 			Integer typeId = Integer.valueOf(request.getParameter("typeId"));

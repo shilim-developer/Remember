@@ -6,20 +6,20 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.google.gson.Gson;
-import com.remember.dao.ColorRecordDao;
+import com.remember.dao.StimulateRecordDao;
 import com.remember.db.DBAccess;
-import com.remember.model.ColorRecord;
+import com.remember.model.StimulateRecord;
 
-public class ColorRecordService {
+public class StimulateRecordService {
 	private DBAccess dbaccess = new DBAccess();
 	private SqlSession sqlsession = null;
 
 	//插入实验记录数据
-	public void addColorRecord(ColorRecord colorRecord) {
+	public void addStimulateRecord(StimulateRecord stimulateRecord) {
 		try {
 			sqlsession = dbaccess.getSqlSession();
-			ColorRecordDao colorRecordDao = sqlsession.getMapper(ColorRecordDao.class);
-			colorRecordDao.insert(colorRecord);
+			StimulateRecordDao stimulateRecordDao = sqlsession.getMapper(StimulateRecordDao.class);
+			stimulateRecordDao.insert(stimulateRecord);
 			sqlsession.commit();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -31,12 +31,12 @@ public class ColorRecordService {
 	}
 
 	//查询实验记录数据
-	public String getAllColorRecordList() {
-		List<ColorRecord> colorRecords = null;
+	public String getAllStimulateRecordList() {
+		List<StimulateRecord> stimulateRecords = null;
 		try {
 			sqlsession = dbaccess.getSqlSession();
-			ColorRecordDao colorRecordDao = sqlsession.getMapper(ColorRecordDao.class);
-			colorRecords = colorRecordDao.selectAll();
+			StimulateRecordDao stimulateRecordDao = sqlsession.getMapper(StimulateRecordDao.class);
+			stimulateRecords = stimulateRecordDao.selectAll();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -45,10 +45,10 @@ public class ColorRecordService {
 			}
 		}
 		Gson gson = new Gson();
-		if(colorRecords == null){
+		if(stimulateRecords == null){
 			return "";
 		} else {
-			return gson.toJson(colorRecords);
+			return gson.toJson(stimulateRecords);
 		}
 	}
 }
