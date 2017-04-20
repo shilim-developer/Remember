@@ -23,6 +23,10 @@
 	<mappers>
 		<mapper resource="com/remember/mapper/TestTypeDao.xml" />
 		<mapper resource="com/remember/mapper/TestRecordDao.xml" />
+		
+		<mapper resource="com/remember/mapper/SexRecordDao.xml"/>
+		<mapper resource="com/remember/mapper/OrientationRecordDao.xml"/>
+		<mapper resource="com/remember/mapper/ColorRecordDao.xml"/>
 	</mappers>
 
 </configuration>

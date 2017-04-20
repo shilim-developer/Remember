@@ -6,9 +6,12 @@ $(function() {
 	var inputTimeOut = false; //输入是否超时
 	var answer = ""; //回答
 	var groupCount = 3; //实验组数
-	var testCount = 10; //实验次数
+	var testCount = 30; //实验次数
 	var oneResult = []; //一次实验结果数组
 	var allResult = []; //所有实验结果数组
+	var rbResult = -1; //红蓝记忆广度
+	var rgResult = -1; //红绿记忆广度
+	var gbReullt = -1; //绿蓝记忆广度
 	var numberCount = 4; //初始数字个数
 	
 	//红绿色盲测试
@@ -48,6 +51,7 @@ $(function() {
 
 	//准备
 	$(".main").on("click", ".start", function() {
+		color = "红蓝";
 		start();
 	});
 
@@ -114,14 +118,27 @@ $(function() {
 				//隐藏时间
 				$(".time").addClass("hidden");
 				allResult.push(oneResult);
-				if(allResult.length == testCount) {
-					//实验结束
-					//数据处理
-					saveDatas();
-					//清楚实验次数提示
-					$(".test-count").text("");
-					$(".test-submit").addClass("hidden");
-					$(".test-end").removeClass("hidden");
+				if(allResult.length == (testCount/3)) {
+					if(rbReullt == -1) {
+						rbReullt = getMemorySpan(numberCount, allResult);
+						//更换颜色
+						color = "红绿";
+						allResult = [];
+					} else if (rgResult == -1) {
+						rgResult = getMemorySpan(numberCount, allResult);
+						//更换颜色
+						color = "绿蓝";
+						allResult = [];
+					} else {
+						gbReullt = getMemorySpan(numberCount, allResult);
+						//实验结束
+						//数据处理
+						saveDatas();
+						//清楚实验次数提示
+						$(".test-count").text("");
+						$(".test-submit").addClass("hidden");
+						$(".test-end").removeClass("hidden");
+					}
 				} else {
 					//进入第二次实验
 					$(".test-submit").addClass("hidden");
@@ -140,10 +157,10 @@ $(function() {
 	function saveDatas() {
 		var url = getBaseUrl() + "TestServlet";
 		var datas = {
-			method: "saveRecord",
-			typeId: 3,
-			difference: color,
-			correctCount: getMemorySpan(numberCount, allResult)
+			method: "saveColorRecord",
+			rb_result: rbResult,
+			rg_result: rgResult,
+			gb_result: gbReullt
 		}
 		$.post(url, datas, function() {
 

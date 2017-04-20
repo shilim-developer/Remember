@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.remember.dao.ColorRecordDao">
+  <resultMap id="BaseResultMap" type="com.remember.model.ColorRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="rg_result" jdbcType="REAL" property="rgResult" />
+    <result column="rb_result" jdbcType="REAL" property="rbResult" />
+    <result column="gb_result" jdbcType="REAL" property="gbResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, rg_result, rb_result, gb_result
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_color_record
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_color_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_color_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.remember.model.ColorRecord">
+    insert into r_color_record (id, type, rg_result, 
+      rb_result, gb_result)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{rgResult,jdbcType=REAL}, 
+      #{rbResult,jdbcType=REAL}, #{gbResult,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.remember.model.ColorRecord">
+    insert into r_color_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="rgResult != null">
+        rg_result,
+      </if>
+      <if test="rbResult != null">
+        rb_result,
+      </if>
+      <if test="gbResult != null">
+        gb_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="rgResult != null">
+        #{rgResult,jdbcType=REAL},
+      </if>
+      <if test="rbResult != null">
+        #{rbResult,jdbcType=REAL},
+      </if>
+      <if test="gbResult != null">
+        #{gbResult,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.remember.model.ColorRecord">
+    update r_color_record
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="rgResult != null">
+        rg_result = #{rgResult,jdbcType=REAL},
+      </if>
+      <if test="rbResult != null">
+        rb_result = #{rbResult,jdbcType=REAL},
+      </if>
+      <if test="gbResult != null">
+        gb_result = #{gbResult,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.remember.model.ColorRecord">
+    update r_color_record
+    set type = #{type,jdbcType=VARCHAR},
+      rg_result = #{rgResult,jdbcType=REAL},
+      rb_result = #{rbResult,jdbcType=REAL},
+      gb_result = #{gbResult,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

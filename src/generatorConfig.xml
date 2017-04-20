@@ -16,13 +16,17 @@
 			targetProject="Remember\src" />
 		<javaClientGenerator targetPackage="com.remember.dao"
 			targetProject="Remember\src" type="XMLMAPPER" />
-		<!-- <table tableName="r_test_type" domainObjectName="TestType" mapperName="TestTypeDao"
+		<!-- <table tableName="r_sex_record" domainObjectName="SexRecord" mapperName="SexRecordDao"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false" /> -->
-		<table tableName="r_test_record" domainObjectName="TestRecord" mapperName="TestRecordDao"
+		<table tableName="r_orientation_record" domainObjectName="OrientationRecord" mapperName="OrientationRecordDao"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false" />
+		<!-- <table tableName="r_color_record" domainObjectName="ColorRecord" mapperName="ColorRecordDao"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false" /> -->
 	</context>
 </generatorConfiguration>

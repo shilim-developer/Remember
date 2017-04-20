@@ -6,9 +6,11 @@ $(function() {
 	var inputTimeOut = false; //输入是否超时
 	var answer = ""; //回答
 	var groupCount = 3; //实验组数
-	var testCount = 10; //实验次数
+	var testCount = 20; //实验次数
 	var oneResult = new Array; //一次实验结果数组
 	var allResult = []; //所有实验结果数组
+	var hResult = -1;//水平记忆广度
+	var vResult = -1;//垂直记忆广度
 	var numberCount = 4;//初始数字个数
 	
 	//排布方式选择
@@ -33,6 +35,9 @@ $(function() {
 	
 	//准备
 	$(".main").on("click", ".start", function() {
+		//设置显示水平的内容
+		$(".content-horizontal").removeClass("hidden");
+		$(".content-vertical").addClass("hidden");
 		start();
 	});
 
@@ -96,15 +101,27 @@ $(function() {
 				//隐藏时间
 				$(".time").addClass("hidden");
 				allResult.push(oneResult);
-				if(allResult.length == testCount) {
-					//实验结束
-					//数据处理
-					saveDatas();
-					//清楚实验次数提示
-					$(".test-count").text("");
-					$(".test-submit").addClass("hidden");
-					$(".test-end").removeClass("hidden");
-				} else {
+				//如果到达一半，更换显示方式，保存数据
+				if(allResult.length == (testCount/2)) {
+					//保存数据
+					if(hResult == -1) {
+						hResult = getMemorySpan(numberCount,allResult);
+						//清空本来的数据
+						allResult = [];
+						//设置显示垂直内容
+						$(".content-horizontal").addClass("hidden");
+						$(".content-vertical").removeClass("hidden");
+					} else {
+						vResult = getMemorySpan(numberCount,allResult);
+						//数据处理
+						saveDatas();
+						//实验结束
+						//清楚实验次数提示
+						$(".test-count").text("");
+						$(".test-submit").addClass("hidden");
+						$(".test-end").removeClass("hidden");
+					}
+				}  else {
 					//进入第二次实验
 					$(".test-submit").addClass("hidden");
 					$(".test-next").removeClass("hidden");
@@ -122,10 +139,9 @@ $(function() {
 	function saveDatas() {
 		var url = getBaseUrl()+"TestServlet";
 		var datas = {
-			method:"saveRecord",
-			typeId:2,
-			difference:orientation,
-			correctCount:getMemorySpan(numberCount,allResult)
+			method:"saveOrientationRecord",
+			h_result:hResult,
+			v_result:vResult
 		}
 		$.post(url,datas,function() {
 			

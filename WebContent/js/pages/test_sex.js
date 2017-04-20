@@ -123,10 +123,9 @@ $(function() {
 	function saveDatas() {
 		var url = getBaseUrl()+"TestServlet";
 		var datas = {
-			method:"saveRecord",
-			typeId:1,
-			difference:sex,
-			correctCount:getMemorySpan(numberCount,allResult)
+			method:"saveSexRecord",
+			sex:sex,
+			result:getMemorySpan(numberCount,allResult)
 		}
 		$.post(url,datas,function() {
 			

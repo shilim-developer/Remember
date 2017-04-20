@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.remember.dao.OrientationRecordDao">
+  <resultMap id="BaseResultMap" type="com.remember.model.OrientationRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="h_result" jdbcType="REAL" property="hResult" />
+    <result column="v_result" jdbcType="REAL" property="vResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, h_result, v_result
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_orientation_record
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_orientation_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_orientation_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.remember.model.OrientationRecord">
+    insert into r_orientation_record (id, type, h_result, 
+      v_result)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{hResult,jdbcType=REAL}, 
+      #{vResult,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.remember.model.OrientationRecord">
+    insert into r_orientation_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="hResult != null">
+        h_result,
+      </if>
+      <if test="vResult != null">
+        v_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="hResult != null">
+        #{hResult,jdbcType=REAL},
+      </if>
+      <if test="vResult != null">
+        #{vResult,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.remember.model.OrientationRecord">
+    update r_orientation_record
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="hResult != null">
+        h_result = #{hResult,jdbcType=REAL},
+      </if>
+      <if test="vResult != null">
+        v_result = #{vResult,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.remember.model.OrientationRecord">
+    update r_orientation_record
+    set type = #{type,jdbcType=VARCHAR},
+      h_result = #{hResult,jdbcType=REAL},
+      v_result = #{vResult,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
