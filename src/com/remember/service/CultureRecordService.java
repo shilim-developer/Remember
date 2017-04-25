@@ -7,12 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.google.gson.Gson;
 import com.remember.dao.CultureRecordDao;
-import com.remember.dao.OrientationRecordDao;
-import com.remember.dao.SexRecordDao;
 import com.remember.db.DBAccess;
 import com.remember.model.CultureRecord;
-import com.remember.model.OrientationRecord;
-import com.remember.model.SexRecord;
 
 public class CultureRecordService {
 	private DBAccess dbaccess = new DBAccess();
@@ -23,7 +19,7 @@ public class CultureRecordService {
 		try {
 			sqlsession = dbaccess.getSqlSession();
 			CultureRecordDao cultureRecordDao = sqlsession.getMapper(CultureRecordDao.class);
-			cultureRecordDao.insert(cultureRecord);
+			cultureRecordDao.insertSelective(cultureRecord);
 			sqlsession.commit();
 		} catch (IOException e) {
 			e.printStackTrace();

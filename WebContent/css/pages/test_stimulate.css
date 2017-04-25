@@ -5,8 +5,10 @@
 	align-items: center;
 }
 .prepare>.prepare-tips{
+	width: 50%;
 	margin-top: 30px;
 	font-size: 16px;
+	text-align: center;
 }
 
 .prepare>.start{
@@ -57,4 +59,8 @@
 }
 .test-next>.next{
 	margin-top: 30px;
+}
+.test-next>.change-tips{
+	width: 50%;
+	text-align: center;
 }

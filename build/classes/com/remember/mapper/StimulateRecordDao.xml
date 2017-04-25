@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.remember.dao.StimulateRecordDao">
+  <resultMap id="BaseResultMap" type="com.remember.model.StimulateRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="number_result" jdbcType="REAL" property="numberResult" />
+    <result column="letter_result" jdbcType="REAL" property="letterResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, number_result, letter_result
+  </sql>
+   <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_stimulate_record
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from r_stimulate_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from r_stimulate_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.remember.model.StimulateRecord">
+    insert into r_stimulate_record (id, type, number_result, 
+      letter_result)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{numberResult,jdbcType=REAL}, 
+      #{letterResult,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.remember.model.StimulateRecord">
+    insert into r_stimulate_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="numberResult != null">
+        number_result,
+      </if>
+      <if test="letterResult != null">
+        letter_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="numberResult != null">
+        #{numberResult,jdbcType=REAL},
+      </if>
+      <if test="letterResult != null">
+        #{letterResult,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.remember.model.StimulateRecord">
+    update r_stimulate_record
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="numberResult != null">
+        number_result = #{numberResult,jdbcType=REAL},
+      </if>
+      <if test="letterResult != null">
+        letter_result = #{letterResult,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.remember.model.StimulateRecord">
+    update r_stimulate_record
+    set type = #{type,jdbcType=VARCHAR},
+      number_result = #{numberResult,jdbcType=REAL},
+      letter_result = #{letterResult,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

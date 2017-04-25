@@ -1,29 +1,3 @@
-/*文化选择*/
-.culture-selector{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.culture-selector>.types {
-	margin-top: 30px;
-	width: auto;
-	display: flex;
-	flex-direction: row;
-}
-.culture-selector>.types>li{
-	width: 150px;
-	height: 150px;
-	margin: 0 20px;
-	color: #fff;
-	font-size: 20px;
-	text-align: center;
-	line-height: 150px;
-	cursor: pointer;
-}
-.junior,.high,.university{
-	background-color: #26ADE4;
-}
-
 /*测试准备*/
 .prepare{
 	display: flex;
@@ -50,11 +24,29 @@
 
 /*测试内容*/
 .test-borad{
-	
 }
 .test-borad>.content{
-	font-size: 100px;
-	letter-spacing: 3px;
+	width: 600px;
+	height: 600px;
+	box-sizing: content-box;
+	/*border: 1px solid black;*/
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.circle{
+	width: 10px;
+	height: 10px;
+	margin: 10px;
+	background: black;
+	border-radius: 100%;
+}
+.no-circle{
+	width: 10px;
+	height: 10px;
+	margin: 10px;
+	background: none;
+	border-radius: 100%;
 }
 
 /*测试提交*/
@@ -73,31 +65,32 @@
 	font-size: 16px;
 }
 .test-submit>.submit-btn{
-	width: /*100px*/;
 	margin-top: 0px;
 }
 
-/*下一次实验*/
-.test-next{
+/*实验结束*/
+.test-end{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-.test-next>.next{
+.test-end>.show-result{
 	margin-top: 30px;
 }
 
-/*测试结果*/
-.result{
+/*实验结果*/
+.test-result{
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	flex-direction: row;
+	justify-content: center;
 }
-
-.result>.title{
-	margin-bottom: 30px;
+.test-result>.table-view>table{
+	background: #FFFFFF;
+	text-align: center;
 }
-.result label,.result span{
-	font-size: 15px;
-	letter-spacing: 2px;
+.test-result>.chart{
+	/*background: cornflowerblue;*/
+	width: 600px;
+	height: 333px;
+	margin-left: 30px;
 }

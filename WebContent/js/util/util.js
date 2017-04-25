@@ -50,10 +50,10 @@ function getRandomNumberStr(count) {
 //自动生成n位相邻不重复的数字字符串
 function getDifRandomNumberStr(n) {
 	var randomResult = "";
-	for(var i=0;i<n;i++) {
+	for(var i = 0; i < n; i++) {
 		var numberArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-		if(i>0) {
-			numberArr.splice(numberArr.indexOf(parseInt(randomResult.charAt(i-1))),1);
+		if(i > 0) {
+			numberArr.splice(numberArr.indexOf(parseInt(randomResult.charAt(i - 1))), 1);
 		}
 		randomResult += numberArr[Math.floor(Math.random() * numberArr.length)];
 	}
@@ -63,16 +63,29 @@ function getDifRandomNumberStr(n) {
 //自动生成n位相邻不重复的字母字符串
 function getDifRandomLetterStr(n) {
 	var randomResult = "";
-	for(var i=0;i<n;i++) {
+	for(var i = 0; i < n; i++) {
 		var numberArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-		'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-	];
-		if(i>0) {
-			numberArr.splice(numberArr.indexOf(randomResult.charAt(i-1)),1);
+			'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+		];
+		if(i > 0) {
+			numberArr.splice(numberArr.indexOf(randomResult.charAt(i - 1)), 1);
 		}
 		randomResult += numberArr[Math.floor(Math.random() * numberArr.length)];
 	}
 	return randomResult;
+}
+
+//从m个点中随机获取n个点
+function getRandomPointIndexArr(m,n) {
+	var result = [];
+	for(var i=0;i<m;i++) {
+		result.push(i);
+	}
+	//数组数据随机打乱
+	result.sort(function(a, b) {
+		return Math.random() > .5 ? -1 : 1;
+	});
+	return result.splice(0,n);
 }
 
 //生成相应颜色的排列
@@ -91,11 +104,11 @@ function getColorBackground(testContent, color) {
 	}
 	//生成html背景代码
 	var result = "";
-//	console.log(colorArr);
+	//	console.log(colorArr);
 	for(var i = 0; i < testContent.length; i++) {
 		result += "<div class='" +
 			(Math.random() > .5 ? colorArr[0] : colorArr[1]) +
-		"'>" + testContent.charAt(i) + "</div>";
+			"'>" + testContent.charAt(i) + "</div>";
 	}
 	return result;
 }
@@ -185,4 +198,20 @@ function getMemorySpan(beginNum, arr) {
 	}
 	result = base + noBase;
 	return result.toFixed(2);
+}
+
+//打开提示
+function showLoading() {
+	layer.msg('数据保存中...', {
+		icon: 16,
+		shade: 0.3,
+		scrollbar: false,
+		shadeClose: false,
+		time: 0
+	});
+}
+
+//关闭提示
+function closeLoading() {
+	layer.closeAll();
 }

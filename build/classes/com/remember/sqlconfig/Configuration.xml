@@ -14,6 +14,7 @@
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 				<property name="url"
 					value="jdbc:mysql://119.29.159.168:3306/remember?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" />
+					<!-- value="jdbc:mysql://localhost:3306/remember?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" /> -->
 				<property name="username" value="root" />
 				<property name="password" value="shilim" />
 			</dataSource>
@@ -23,6 +24,10 @@
 	<mappers>
 		<mapper resource="com/remember/mapper/TestTypeDao.xml" />
 		<mapper resource="com/remember/mapper/TestRecordDao.xml" />
+		
+		<mapper resource="com/remember/mapper/SexRecordDao.xml"/>
+		<mapper resource="com/remember/mapper/StimulateRecordDao.xml"/>
+		<mapper resource="com/remember/mapper/CultureRecordDao.xml"/>
 	</mappers>
 
 </configuration>

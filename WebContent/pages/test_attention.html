@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<title>注意力广度测试</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate/animate.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/pages/test_attention.css" />
+	</head>
+
+	<body class="main">
+		<!--退出实验开始-->
+		<a class="back btn btn-default" href="../index.html">
+			<i class="glyphicon glyphicon-chevron-left"></i>退出实验
+		</a>
+		<!--退出实验结束-->
+
+		<!--实验次数开始-->
+		<div class="test-count">
+		</div>
+		<!--实验次数结束-->
+
+		<!--测试准备开始-->
+		<div class="prepare">
+			<div class="title animated fadeIn">测试提示</div>
+			<div class="prepare-tips">本次实验分为40次，随机呈现5-12个散点，每个数目会出现5次，呈现时间为0.25秒，结束后输入你看到的散点数，准备好了请点击开始按钮</div>
+			<button class="start">开始</button>
+		</div>
+		<!--测试准备结束-->
+
+		<!--测试内容开始-->
+		<div class="test-borad hidden">
+			<div class="content">
+				<!--<div class="circle"></div>-->
+			</div>
+		</div>
+		<!--测试内容结束-->
+
+		<!--测试提交开始-->
+		<div class="test-submit hidden">
+			<div class="title animated fadeIn">请输入你看到的点的个数</div>
+			<input class="submit-in form-control" type="text" autofocus="autofocus" />
+			<div class="submit-tips"></div>
+			<button class="submit-btn btn btn-default">进入下一次实验</button>
+		</div>
+		<!--测试提交结束-->
+
+		<!--实验结束提示开始-->
+		<div class="test-end hidden">
+			<div class="title">实验结束，感谢你的参与</div>
+			<button class="show-result btn btn-default">查看实验结果</button>
+		</div>
+		<!--实验结束提示结束-->
+
+		<!--实验结果开始-->
+		<div class="test-result hidden">
+			<div class="table-view">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th data-field="index" data-align="center">目标数目</th>
+							<th data-field="type" data-align="center">呈现次数</th>
+							<th data-field="numberResult" data-align="center">答对次数</th>
+							<th data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+						<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+						<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+						<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+						<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+						<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+						<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>
+						<tr>
+							<td data-field="index" data-align="center">目标数目</td>
+							<td data-field="type" data-align="center">呈现次数</th>
+								<td data-field="numberResult" data-align="center">答对次数</th>
+									<td data-field="letterResult" data-align="center">正确百分率</th>
+						</tr>-->
+					</tbody>
+				</table>
+			</div>
+			<div id="resultChart" class="chart">
+
+			</div>
+		</div>
+		<!--实验结果开始-->
+
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/chart/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/util/util.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/pages/test_attention.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

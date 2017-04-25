@@ -24,7 +24,7 @@
 		<!--测试准备开始-->
 		<div class="prepare">
 			<div class="title animated fadeIn">测试提示</div>
-			<div class="prepare-tips">本次实验分为10次，每次共有3组，每组你将有10秒时间来记忆和回答，准备好了请点击开始按钮</div>
+			<div class="prepare-tips">本次实验分为20次，前10次为数字类型，后10次为字母类型，每次共有3组，每组数字或字母将一个一个呈现，每个数字或字母呈现时间为0.7秒，呈现完成后请按顺序输入记忆的数字或字母，准备好了请点击开始按钮</div>
 			<button class="start">开始</button>
 		</div>
 		<!--测试准备结束-->
@@ -47,7 +47,7 @@
 		
 		<!--下次实验提示开始-->
 		<div class="test-next hidden">
-			<div class="title">准备好点击下面按钮进入下一次实验</div>
+			<div class="change-tips title">准备好点击下面按钮进入下一次实验</div>
 			<button class="next btn btn-default">进入下一次实验</button>
 		</div>
 		<!--下次实验提示结束-->
@@ -59,6 +59,7 @@
 		<!--实验结束提示结束-->
 		
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/util/util.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/pages/test_stimulate.js" type="text/javascript" charset="utf-8"></script>
 	</body>

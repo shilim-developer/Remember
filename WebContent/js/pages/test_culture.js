@@ -31,7 +31,10 @@ $(function() {
 
 	//准备
 	$(".main").on("click", ".start", function() {
-		start();
+		$(".prepare").addClass("hidden");
+		setTimeout(function() {
+			start();
+		}, 700);
 	});
 
 	//开始
@@ -40,7 +43,6 @@ $(function() {
 		testContent = getDifRandomNumberStr(numberCount + allResult.length);
 		$(".test-count").text("第" + (allResult.length + 1) + "次实验");
 		//显示测试
-		$(".prepare").addClass("hidden");
 		$(".test-borad").removeClass("hidden");
 		//开始显示测试内容
 		rememberTimeTask();
@@ -50,8 +52,11 @@ $(function() {
 	$(".main").on("click", ".next", function() {
 		//初始化数据
 		oneResult = [];
+		$(".content").text("");
 		$(".test-next").addClass("hidden");
-		start();
+		setTimeout(function() {
+			start();
+		}, 700);
 	});
 
 	//观察计时器
@@ -79,20 +84,25 @@ $(function() {
 
 	//保存数据
 	function saveDatas() {
+		showLoading();
 		var url = getBaseUrl() + "TestServlet";
 		var datas = {
 			method: "saveCultureRecord",
 			culture: culture,
 			result: getMemorySpan(numberCount, allResult)
 		}
-		$.post(url, datas, function() {
-			//清除实验次数提示
-			$(".test-count").text("");
-			$(".test-submit").addClass("hidden");
-			$(".test-end").removeClass("hidden");
-		}, function() {
-			alert("网络错误，请确保你的网络开启");
-		});
+		$.post(url, datas)
+			.success(function(data) {
+				closeLoading();
+				//清除实验次数提示
+				$(".test-count").text("");
+				$(".test-submit").addClass("hidden");
+				$(".test-end").removeClass("hidden");
+			})
+			.error(function() {
+				closeLoading();
+				alert("网络错误，请确保你的网络开启");
+			});
 	}
 
 	//提交
@@ -114,7 +124,9 @@ $(function() {
 			}
 		} else {
 			$(".test-submit").addClass("hidden");
-			start();
+			setTimeout(function() {
+				start();
+			}, 700);
 		}
 	});
 

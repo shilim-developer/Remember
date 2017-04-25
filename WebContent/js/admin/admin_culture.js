@@ -21,8 +21,7 @@ $(function() {
 	//请求参数
 	function queryParams(params) { 
 		var temp = { 
-			method: "getRecordByTypeId",
-			typeId: 2
+			method: "getAllCultureRecord",
 		};
 		return temp;
 	}

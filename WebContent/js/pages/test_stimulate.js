@@ -12,7 +12,10 @@ $(function() {
 
 	//准备
 	$(".main").on("click", ".start", function() {
-		start();
+		$(".prepare").addClass("hidden");
+		setTimeout(function() {
+			start();
+		}, 700);
 	});
 
 	//开始
@@ -27,7 +30,6 @@ $(function() {
 			$(".test-count").text("字母类型第" + (allResult.length + 1) + "次实验");
 		}
 		//显示测试
-		$(".prepare").addClass("hidden");
 		$(".test-borad").removeClass("hidden");
 		//开始显示测试内容
 		rememberTimeTask();
@@ -37,8 +39,11 @@ $(function() {
 	$(".main").on("click", ".next", function() {
 		//初始化数据
 		oneResult = [];
+		$(".content").text("");
 		$(".test-next").addClass("hidden");
-		start();
+		setTimeout(function() {
+			start();
+		}, 700);
 	});
 
 	//观察计时器
@@ -48,7 +53,7 @@ $(function() {
 			//复原currentIndex
 			currentIndex = 0;
 			//进入输入
-			if((oneResult.length+1) == groupCount) {
+			if((oneResult.length + 1) == groupCount) {
 				$(".submit-btn").text("本次实验结束");
 			} else {
 				$(".submit-btn").text("进入下一组实验");
@@ -66,20 +71,25 @@ $(function() {
 
 	//保存数据
 	function saveDatas() {
+		showLoading();
 		var url = getBaseUrl() + "TestServlet";
 		var datas = {
 			method: "saveStimulateRecord",
 			number_result: numberResult,
 			letter_result: letterResult
 		}
-		$.post(url, datas, function() {
-			//清除实验次数提示
-			$(".test-count").text("");
-			$(".test-submit").addClass("hidden");
-			$(".test-end").removeClass("hidden");
-		}, function() {
-			alert("网络错误，请确保你的网络开启");
-		});
+		$.post(url, datas)
+			.success(function(data) {
+				closeLoading();
+				//清除实验次数提示
+				$(".test-count").text("");
+				$(".test-submit").addClass("hidden");
+				$(".test-end").removeClass("hidden");
+			})
+			.error(function() {
+				closeLoading();
+				alert("网络错误，请确保你的网络开启");
+			});
 	}
 
 	//提交
@@ -98,6 +108,7 @@ $(function() {
 					allResult = [];
 					//进入第二次实验
 					$(".test-submit").addClass("hidden");
+					$(".change-tips").text("数字类型实验结束，将进入字母类型实验，准备好请点击下面按钮开始");
 					$(".test-next").removeClass("hidden");
 				} else {
 					letterResult = getMemorySpan(numberCount, allResult);
@@ -108,11 +119,14 @@ $(function() {
 			} else {
 				//进入第二次实验
 				$(".test-submit").addClass("hidden");
+				$(".change-tips").text("准备好点击下面按钮进入下一次实验")
 				$(".test-next").removeClass("hidden");
 			}
 		} else {
 			$(".test-submit").addClass("hidden");
-			start();
+			setTimeout(function() {
+				start();
+			}, 700);
 		}
 	});
 

@@ -7,16 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.remember.model.ColorRecord;
 import com.remember.model.CultureRecord;
-import com.remember.model.OrientationRecord;
 import com.remember.model.SexRecord;
 import com.remember.model.StimulateRecord;
-import com.remember.model.TestRecord;
 import com.remember.service.StimulateRecordService;
 import com.remember.service.CultureRecordService;
 import com.remember.service.SexRecordService;
-import com.remember.service.TestRecordService;
 
 /**
  * Servlet implementation class TestServlet
@@ -24,8 +20,6 @@ import com.remember.service.TestRecordService;
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String methodName;
-	private TestRecordService testRecordService = new TestRecordService();
 	private SexRecordService sexRecordService = new SexRecordService();
 	private CultureRecordService cultureRecordService = new CultureRecordService();
 	private StimulateRecordService stimulateRecordService = new StimulateRecordService();
@@ -52,21 +46,16 @@ public class TestServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=utf-8");
 		String methodName = request.getParameter("method");
-		String responseJson = "success";
+		String responseJson = "{\"result\":\"success\"}";
 		switch (methodName) {
-		case "saveRecord":
-			TestRecord testRecord = new TestRecord();
-			testRecord.setTrDifference(request.getParameter("difference"));
-			testRecord.setTrCorrectCount(request.getParameter("correctCount"));
-			testRecord.setTrTypeId(Integer.valueOf(request.getParameter("typeId")));
-			saveRecord(testRecord);
-			break;
+		//保存性别测试数据
 		case "saveSexRecord":
 			SexRecord sexRecord = new SexRecord();
 			sexRecord.setSex(request.getParameter("sex"));
 			sexRecord.setResult(Float.valueOf(request.getParameter("result")));
 			sexRecordService.addSexRecord(sexRecord);
 			break;
+		//获取性别测试数据
 		case "getAllSexRecord":
 			responseJson = sexRecordService.getAllSexRecordList();
 			break;
@@ -88,26 +77,11 @@ public class TestServlet extends HttpServlet {
 		case "getAllStimulateRecord":
 			responseJson = stimulateRecordService.getAllStimulateRecordList();
 			break;
-		case "getRecordByTypeId":
-			Integer typeId = Integer.valueOf(request.getParameter("typeId"));
-			responseJson = getRecordList(typeId);
-			break;
 		default:
 			break;
 		}
 		response.getWriter().write(responseJson);
 //		response.getWriter().append("success");
 	}
-
-	private void saveRecord(TestRecord testRecord) {
-		System.out.println(testRecord);
-		testRecordService.addTestRecord(testRecord);
-	}
-	
-	private String getRecordList(Integer typeid) {
-		return testRecordService.getTestRecordListByTypeId(typeid);
-	}
-	
-	
 
 }

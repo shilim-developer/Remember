@@ -19,7 +19,7 @@ public class SexRecordService {
 		try {
 			sqlsession = dbaccess.getSqlSession();
 			SexRecordDao sexRecordDao = sqlsession.getMapper(SexRecordDao.class);
-			sexRecordDao.insert(SexRecord);
+			sexRecordDao.insertSelective(SexRecord);
 			sqlsession.commit();
 		} catch (IOException e) {
 			e.printStackTrace();

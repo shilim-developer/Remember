@@ -19,7 +19,7 @@ public class StimulateRecordService {
 		try {
 			sqlsession = dbaccess.getSqlSession();
 			StimulateRecordDao stimulateRecordDao = sqlsession.getMapper(StimulateRecordDao.class);
-			stimulateRecordDao.insert(stimulateRecord);
+			stimulateRecordDao.insertSelective(stimulateRecord);
 			sqlsession.commit();
 		} catch (IOException e) {
 			e.printStackTrace();
